@@ -2,36 +2,38 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>隱私權政策 | 我的標記 (MyMark)</title>
     <style>
         :root {
             --bg-primary: #f5f5f7;
-            --card-bg: rgba(255, 255, 255, 0.92);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --item-bg: #fbfbfd;
             --text-primary: #1d1d1f;
             --text-secondary: #6e6e73;
             --accent: #0071e3;
             --accent-soft: rgba(0, 113, 227, 0.1);
             --border-color: rgba(0, 0, 0, 0.08);
-            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-            --pill-bg: #e8e8ed;
-            --success-badge: #34c759;
-            --success-soft: rgba(52, 199, 89, 0.12);
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            --pill-bg: #efeff4;
+            --success-badge: #248a3d;
+            --success-soft: rgba(52, 199, 89, 0.15);
         }
 
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg-primary: #121214;
-                --card-bg: rgba(28, 28, 30, 0.94);
+                --bg-primary: #000000;
+                --card-bg: rgba(28, 28, 30, 0.96);
+                --item-bg: #242426;
                 --text-primary: #f5f5f7;
                 --text-secondary: #98989d;
                 --accent: #2997ff;
-                --accent-soft: rgba(41, 151, 255, 0.15);
-                --border-color: rgba(255, 255, 255, 0.1);
-                --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
-                --pill-bg: #2c2c2e;
+                --accent-soft: rgba(41, 151, 255, 0.18);
+                --border-color: rgba(255, 255, 255, 0.12);
+                --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+                --pill-bg: #38383a;
                 --success-badge: #30d158;
-                --success-soft: rgba(48, 209, 88, 0.16);
+                --success-soft: rgba(48, 209, 88, 0.2);
             }
         }
 
@@ -39,39 +41,49 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "PingFang TC", "Helvetica Neue", Arial, sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-primary);
-            line-height: 1.68;
-            padding: 40px 20px 80px;
+            line-height: 1.6;
+            padding: max(20px, env(safe-area-inset-top)) max(14px, env(safe-area-inset-right)) max(40px, env(safe-area-inset-bottom)) max(14px, env(safe-area-inset-left));
             -webkit-font-smoothing: antialiased;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 760px;
             margin: 0 auto;
+            width: 100%;
         }
 
+        /* 頂部語言切換膠囊按鈕 */
         .lang-switch {
             display: flex;
             justify-content: flex-end;
-            margin-bottom: 20px;
-            gap: 10px;
+            margin-bottom: 16px;
+            gap: 8px;
         }
 
         .lang-btn {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             color: var(--text-primary);
-            padding: 6px 14px;
+            padding: 8px 16px;
             border-radius: 20px;
-            font-size: 14px;
+            font-size: 13px;
+            font-weight: 500;
             cursor: pointer;
             transition: all 0.2s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            min-height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .lang-btn.active {
@@ -81,91 +93,118 @@
             font-weight: 600;
         }
 
+        /* 標題卡片 */
         .header-card {
             background: var(--card-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-radius: 24px;
+            border-radius: 20px;
             border: 1px solid var(--border-color);
-            padding: 36px 32px;
+            padding: 28px 20px;
             box-shadow: var(--card-shadow);
-            margin-bottom: 28px;
+            margin-bottom: 20px;
             text-align: center;
         }
 
         .app-badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             background: var(--accent-soft);
             color: var(--accent);
-            padding: 6px 16px;
-            border-radius: 30px;
-            font-size: 13px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
             font-weight: 600;
-            margin-bottom: 16px;
-            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            letter-spacing: 0.3px;
         }
 
         h1 {
-            font-size: 32px;
+            font-size: 26px;
             font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 8px;
+            letter-spacing: -0.4px;
+            margin-bottom: 6px;
+            line-height: 1.25;
         }
 
         .sub-title {
             color: var(--text-secondary);
-            font-size: 15px;
+            font-size: 13px;
         }
 
+        /* 核心特色卡片（手機為垂直堆疊，平板以上雙欄/三欄） */
         .highlight-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-            margin-bottom: 28px;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 600px) {
+            .highlight-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 14px;
+            }
         }
 
         .highlight-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 18px;
-            padding: 20px;
+            border-radius: 16px;
+            padding: 16px;
             box-shadow: var(--card-shadow);
             display: flex;
             align-items: flex-start;
-            gap: 14px;
+            gap: 12px;
         }
 
         .highlight-icon {
-            font-size: 24px;
-            line-height: 1;
+            font-size: 22px;
+            line-height: 1.2;
+            flex-shrink: 0;
         }
 
         .highlight-text h3 {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             margin-bottom: 4px;
+            line-height: 1.3;
         }
 
         .highlight-text p {
-            font-size: 13px;
+            font-size: 12.5px;
             color: var(--text-secondary);
             line-height: 1.45;
         }
 
+        /* 內容卡片 */
         .content-card {
             background: var(--card-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-radius: 24px;
+            border-radius: 20px;
             border: 1px solid var(--border-color);
-            padding: 36px 32px;
+            padding: 24px 18px;
             box-shadow: var(--card-shadow);
         }
 
+        @media (min-width: 600px) {
+            .content-card {
+                padding: 36px 32px;
+                border-radius: 24px;
+            }
+            .header-card {
+                padding: 36px 28px;
+                border-radius: 24px;
+            }
+            h1 {
+                font-size: 30px;
+            }
+        }
+
         section {
-            margin-bottom: 32px;
+            margin-bottom: 28px;
         }
 
         section:last-child {
@@ -173,28 +212,31 @@
         }
 
         h2 {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 600;
             margin-bottom: 12px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             color: var(--text-primary);
+            line-height: 1.35;
         }
 
         h2::before {
             content: "";
             display: inline-block;
             width: 4px;
-            height: 18px;
+            height: 16px;
             background: var(--accent);
             border-radius: 2px;
+            flex-shrink: 0;
         }
 
         p {
-            font-size: 15px;
+            font-size: 14.5px;
             color: var(--text-secondary);
             margin-bottom: 12px;
+            line-height: 1.65;
         }
 
         ul {
@@ -204,72 +246,121 @@
         }
 
         li {
-            font-size: 15px;
+            font-size: 14px;
             color: var(--text-secondary);
             position: relative;
-            padding-left: 20px;
+            padding-left: 18px;
             margin-bottom: 8px;
+            line-height: 1.55;
         }
 
         li::before {
             content: "•";
             position: absolute;
-            left: 4px;
+            left: 2px;
             color: var(--accent);
             font-weight: bold;
         }
 
-        .permission-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 16px 0;
-            border-radius: 12px;
-            overflow: hidden;
-            font-size: 14px;
+        /* 手機友善卡片式權限清單（告別傳統破版表格） */
+        .permission-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 14px 0 16px;
         }
 
-        .permission-table th,
-        .permission-table td {
-            padding: 12px 16px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
+        .permission-card {
+            background: var(--item-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 14px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
-        .permission-table th {
-            background: var(--pill-bg);
-            color: var(--text-primary);
+        .permission-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .permission-title-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .permission-name {
+            font-size: 15px;
             font-weight: 600;
+            color: var(--text-primary);
         }
 
-        .permission-table td {
+        .permission-key {
+            font-size: 11px;
             color: var(--text-secondary);
+            background: var(--pill-bg);
+            padding: 2px 7px;
+            border-radius: 6px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
         }
 
         .badge-green {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
             background: var(--success-soft);
             color: var(--success-badge);
-            font-size: 12px;
+            font-size: 11.5px;
             font-weight: 600;
             padding: 3px 8px;
-            border-radius: 12px;
+            border-radius: 8px;
+            white-space: nowrap;
         }
 
-        .footer {
-            margin-top: 40px;
-            text-align: center;
-            font-size: 13px;
+        .permission-detail {
+            font-size: 13.5px;
             color: var(--text-secondary);
+            line-height: 1.5;
+            margin: 0;
         }
 
-        .footer a {
-            color: var(--accent);
-            text-decoration: none;
+        .permission-detail strong {
+            color: var(--text-primary);
             font-weight: 500;
         }
 
-        .footer a:hover {
+        /* 聯絡資訊方塊 */
+        .contact-box {
+            background: var(--item-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 14px 16px;
+            margin-top: 10px;
+        }
+
+        .contact-box a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            word-break: break-all;
+        }
+
+        .contact-box a:hover {
             text-decoration: underline;
+        }
+
+        .footer {
+            margin-top: 32px;
+            text-align: center;
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            line-height: 1.5;
         }
 
         .lang-en {
@@ -288,9 +379,9 @@
         <!-- 繁體中文內容 -->
         <div id="content-zh" class="lang-zh">
             <div class="header-card">
-                <div class="app-badge">iOS APP 隱私保護聲明</div>
+                <div class="app-badge">iOS App 隱私保護聲明</div>
                 <h1>我的標記 (MyMark)</h1>
-                <p class="sub-title">隱私權政策 ‧ 最後更新日期：2026 年 11 月</p>
+                <p class="sub-title">隱私權政策 ‧ 最後更新：2026 年 11 月</p>
             </div>
 
             <!-- 核心重點卡片 -->
@@ -299,7 +390,7 @@
                     <div class="highlight-icon">🔒</div>
                     <div class="highlight-text">
                         <h3>100% 本地離線運算</h3>
-                        <p>所有照片、繪圖標記與工程存檔完全在您的裝置本機執行，無需網路連線。</p>
+                        <p>所有照片、繪圖標記與工程存檔完全在您的裝置本機執行，不需網路連線。</p>
                     </div>
                 </div>
                 <div class="highlight-card">
@@ -313,7 +404,7 @@
                     <div class="highlight-icon">📵</div>
                     <div class="highlight-text">
                         <h3>無第三方追蹤與廣告</h3>
-                        <p>零整合第三方分析統計代碼（Analytics）、零廣告追蹤器，保障純淨私密體驗。</p>
+                        <p>零整合第三方分析統計代碼（Analytics）、零廣告追蹤器，保障純淨體驗。</p>
                     </div>
                 </div>
             </div>
@@ -322,7 +413,7 @@
             <div class="content-card">
                 <section>
                     <h2>1. 前言與隱私核心理念</h2>
-                    <p>感謝您使用「我的標記」（以下簡稱「本 App」）。本 App 致力於為使用者提供高效率、極簡且安全的照片標記與塗鴉工具。我們高度重視您的隱私權，本隱私權政策旨在透明地說明本 App 如何處理您在使用過程中涉及的權限與資料。</p>
+                    <p>感謝您使用「我的標記」（以下簡稱「本 App」）。本 App 致力於為使用者提供高效率、極簡且安全無虞的照片標記與塗鴉工具。我們高度重視您的隱私權，本隱私權政策旨在透明地說明本 App 如何處理您在使用過程中涉及的權限與資料。</p>
                     <p><strong>核心原則：本 App 不架設任何外部資料庫或雲端收集伺服器，您的所有照片與創作內容永遠只屬於您自己。</strong></p>
                 </section>
 
@@ -330,33 +421,48 @@
                     <h2>2. iOS 系統權限與使用目的</h2>
                     <p>為了提供照片標記與保存功能，本 App 可能會在您操作特定功能時請求以下 iOS 系統權限：</p>
                     
-                    <table class="permission-table">
-                        <thead>
-                            <tr>
-                                <th>系統權限項目</th>
-                                <th>使用時機與必要目的</th>
-                                <th>資料處理方式</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>相機拍攝<br>(NSCameraUsageDescription)</strong></td>
-                                <td>當您點擊相機圖示進行即時拍照，並立即將照片載入至畫布進行標記。</td>
-                                <td><span class="badge-green">僅本機暫存</span> 即時取景拍照，照片僅保留於本機畫布，不會上傳。</td>
-                            </tr>
-                            <tr>
-                                <td><strong>照片存取<br>(NSPhotoLibraryUsageDescription)</strong></td>
-                                <td>當您由本機相簿選擇要標記的圖片，或使用覆蓋原圖編輯功能。</td>
-                                <td><span class="badge-green">僅本機讀取</span> 透過 iOS 官方 Photos 框架讀取您指定選取的圖片。</td>
-                            </tr>
-                            <tr>
-                                <td><strong>儲存相片至相簿<br>(NSPhotoLibraryAddUsageDescription)</strong></td>
-                                <td>當您完成標記後，點擊「儲存」將成果圖匯出存回您的手機相簿。</td>
-                                <td><span class="badge-green">僅本機寫入</span> 僅將合成後的圖片寫入您的本機相簿，不作任何其他存取。</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p>您可以隨時在 iOS 裝置的「設定」>「我的標記」中自訂或關閉上述權限授權，亦可透過本 App 設定頁面中的「系統權限檢查」功能確認當前授權狀態。</p>
+                    <div class="permission-list">
+                        <!-- 相機 -->
+                        <div class="permission-card">
+                            <div class="permission-top">
+                                <div class="permission-title-group">
+                                    <span class="permission-name">相機拍攝</span>
+                                    <span class="permission-key">NSCameraUsageDescription</span>
+                                </div>
+                                <span class="badge-green">✓ 僅本機暫存</span>
+                            </div>
+                            <p class="permission-detail"><strong>使用目的：</strong>當您點擊相機圖示進行即時拍照，並立即載入畫布進行標記。</p>
+                            <p class="permission-detail"><strong>資料處理：</strong>即時取景拍照，照片僅保留於本機記憶體畫布中，絕不上傳。</p>
+                        </div>
+
+                        <!-- 相簿讀取 -->
+                        <div class="permission-card">
+                            <div class="permission-top">
+                                <div class="permission-title-group">
+                                    <span class="permission-name">照片存取</span>
+                                    <span class="permission-key">NSPhotoLibraryUsageDescription</span>
+                                </div>
+                                <span class="badge-green">✓ 僅本機讀取</span>
+                            </div>
+                            <p class="permission-detail"><strong>使用目的：</strong>當您由本機相簿選擇要標記的圖片，或使用覆蓋原圖編輯功能。</p>
+                            <p class="permission-detail"><strong>資料處理：</strong>透過 iOS 官方 Photos 框架讀取您指定選取的圖片，不掃描未選定照片。</p>
+                        </div>
+
+                        <!-- 儲存至相簿 -->
+                        <div class="permission-card">
+                            <div class="permission-top">
+                                <div class="permission-title-group">
+                                    <span class="permission-name">儲存相片至相簿</span>
+                                    <span class="permission-key">NSPhotoLibraryAddUsageDescription</span>
+                                </div>
+                                <span class="badge-green">✓ 僅本機寫入</span>
+                            </div>
+                            <p class="permission-detail"><strong>使用目的：</strong>當您完成標記後，點擊「儲存」將成果圖匯出存回您的手機相簿。</p>
+                            <p class="permission-detail"><strong>資料處理：</strong>僅將合成後的圖片寫入您的本機相簿，不作任何其他存取或傳輸。</p>
+                        </div>
+                    </div>
+
+                    <p>您可以隨時在 iOS 裝置的「設定」>「我的標記」中調整或關閉上述授權，亦可透過本 App 設定頁面中的「系統權限檢查」隨時確認授權狀態。</p>
                 </section>
 
                 <section>
@@ -375,24 +481,26 @@
                     <ul>
                         <li><strong>無第三方分析（Analytics）：</strong>未嵌入任何如 Google Analytics、Firebase、Mixpanel 等追蹤工具。</li>
                         <li><strong>無任何商業廣告（Ads）：</strong>未嵌入任何如 Google AdMob、Unity Ads 等廣告網路 SDK。</li>
-                        <li><strong>無使用者識別碼追蹤：</strong>不使用 IDFA（廣告識別碼），不進行任何跨應用程式或跨網站之使用者追蹤行為。</li>
+                        <li><strong>無使用者追蹤：</strong>不使用 IDFA（廣告識別碼），不進行任何跨應用程式或跨網站追蹤。</li>
                     </ul>
                 </section>
 
                 <section>
                     <h2>5. 兒童隱私保護</h2>
-                    <p>本 App 適合所有年齡層使用者安心使用。由於本 App 完全不收集任何個人身份資料，亦不會主動辨識使用者年齡，更無任何收集或洩漏兒童個人資訊之風險。</p>
+                    <p>本 App 適合所有年齡層使用者安心使用。由於本 App 完全不收集任何個人身份資料，亦不會辨識使用者年齡，更無任何收集或洩漏兒童個人資訊之風險。</p>
                 </section>
 
                 <section>
                     <h2>6. 隱私權政策之修訂</h2>
-                    <p>若未來因 iOS 系統升級或 App 新增功能而調整隱私規範，我們將在此頁面同步發布最新版本之隱私權政策。建議您定期檢視以掌握最新資訊。</p>
+                    <p>若未來因 iOS 系統升級或 App 新增功能而調整隱私規範，我們將在此頁面同步發布最新版本之隱私權政策。</p>
                 </section>
 
                 <section>
                     <h2>7. 聯絡我們與支援</h2>
                     <p>如果您對本 App 的隱私權政策有任何疑問、建議或回饋，歡迎隨時透過電子郵件與我們聯繫：</p>
-                    <p>聯絡信箱：<a href="mailto:cat.cafe1982@icloud.com">cat.cafe1982@icloud.com</a></p>
+                    <div class="contact-box">
+                        <p style="margin-bottom: 0;">聯絡信箱：<a href="mailto:cat.cafe1982@icloud.com">cat.cafe1982@icloud.com</a></p>
+                    </div>
                 </section>
             </div>
         </div>
@@ -410,21 +518,21 @@
                 <div class="highlight-card">
                     <div class="highlight-icon">🔒</div>
                     <div class="highlight-text">
-                        <h3>100% On-Device Processing</h3>
-                        <p>All photos, markups, and project edits are computed entirely on your device with no internet connection required.</p>
+                        <h3>100% On-Device</h3>
+                        <p>All photos, markups, and edits are computed purely on your device without internet access.</p>
                     </div>
                 </div>
                 <div class="highlight-card">
                     <div class="highlight-icon">🚫</div>
                     <div class="highlight-text">
-                        <h3>Zero Personal Data Collected</h3>
-                        <p>No user accounts, no backend servers, and zero collection, transmission, or sale of your personal information.</p>
+                        <h3>Zero Data Collected</h3>
+                        <p>No user accounts, no backend servers, and zero collection or sale of personal data.</p>
                     </div>
                 </div>
                 <div class="highlight-card">
                     <div class="highlight-icon">📵</div>
                     <div class="highlight-text">
-                        <h3>No Trackers or Advertising</h3>
+                        <h3>No Trackers or Ads</h3>
                         <p>Completely free from third-party analytics SDKs, trackers, and advertising networks.</p>
                     </div>
                 </div>
@@ -435,39 +543,54 @@
                 <section>
                     <h2>1. Overview & Privacy Principles</h2>
                     <p>Thank you for using "MyMark" (hereinafter referred to as "the App"). MyMark is designed to be an intuitive, lightweight, and secure photo annotation tool. We take your privacy very seriously.</p>
-                    <p><strong>Core Commitment: We do not operate any external servers or cloud databases. Your photos, annotations, and created works remain exclusively on your device.</strong></p>
+                    <p><strong>Core Commitment: We do not operate any external servers or cloud databases. Your photos and annotations remain exclusively on your device.</strong></p>
                 </section>
 
                 <section>
                     <h2>2. iOS System Permissions & Purpose</h2>
-                    <p>To enable marking up images and saving exported results, the App may request the following system permissions when triggered by your actions:</p>
+                    <p>To enable marking up images and saving exported results, the App may request the following system permissions:</p>
                     
-                    <table class="permission-table">
-                        <thead>
-                            <tr>
-                                <th>Permission</th>
-                                <th>Purpose</th>
-                                <th>Handling Method</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Camera<br>(NSCameraUsageDescription)</strong></td>
-                                <td>Taking instant photos to load directly onto the canvas for marking up.</td>
-                                <td><span class="badge-green">Local Only</span> Used only in real-time camera preview. Photos stay on the canvas locally.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Photo Library<br>(NSPhotoLibraryUsageDescription)</strong></td>
-                                <td>Selecting existing photos to edit or overwriting the original asset.</td>
-                                <td><span class="badge-green">Local Only</span> Accesses selected photos strictly through Apple's Photos framework on device.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Add to Photo Library<br>(NSPhotoLibraryAddUsageDescription)</strong></td>
-                                <td>Exporting and saving your finished annotated image into your photo album.</td>
-                                <td><span class="badge-green">Local Only</span> Writes the rendered output photo back to your local library.</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="permission-list">
+                        <!-- Camera -->
+                        <div class="permission-card">
+                            <div class="permission-top">
+                                <div class="permission-title-group">
+                                    <span class="permission-name">Camera</span>
+                                    <span class="permission-key">NSCameraUsageDescription</span>
+                                </div>
+                                <span class="badge-green">✓ Local Only</span>
+                            </div>
+                            <p class="permission-detail"><strong>Purpose:</strong> Taking instant photos to load directly onto the canvas for marking up.</p>
+                            <p class="permission-detail"><strong>Data Handling:</strong> Used only in real-time camera preview. Photos stay on the canvas locally and are never transmitted.</p>
+                        </div>
+
+                        <!-- Photo Library -->
+                        <div class="permission-card">
+                            <div class="permission-top">
+                                <div class="permission-title-group">
+                                    <span class="permission-name">Photo Library</span>
+                                    <span class="permission-key">NSPhotoLibraryUsageDescription</span>
+                                </div>
+                                <span class="badge-green">✓ Local Only</span>
+                            </div>
+                            <p class="permission-detail"><strong>Purpose:</strong> Selecting existing photos to edit or overwriting the original asset.</p>
+                            <p class="permission-detail"><strong>Data Handling:</strong> Accesses selected photos strictly through Apple's Photos framework on device.</p>
+                        </div>
+
+                        <!-- Add to Photo Library -->
+                        <div class="permission-card">
+                            <div class="permission-top">
+                                <div class="permission-title-group">
+                                    <span class="permission-name">Add to Photo Library</span>
+                                    <span class="permission-key">NSPhotoLibraryAddUsageDescription</span>
+                                </div>
+                                <span class="badge-green">✓ Local Only</span>
+                            </div>
+                            <p class="permission-detail"><strong>Purpose:</strong> Exporting and saving your finished annotated image into your photo album.</p>
+                            <p class="permission-detail"><strong>Data Handling:</strong> Writes the rendered output photo back to your local library without extra access.</p>
+                        </div>
+                    </div>
+
                     <p>You can revoke or modify these permissions at any time via iOS Settings > MyMark, or check your permission statuses in the App's Settings > System Permissions.</p>
                 </section>
 
@@ -504,7 +627,9 @@
                 <section>
                     <h2>7. Contact & Support</h2>
                     <p>If you have any questions, suggestions, or feedback regarding this Privacy Policy, please feel free to reach out to us via email:</p>
-                    <p>Contact Email: <a href="mailto:cat.cafe1982@icloud.com">cat.cafe1982@icloud.com</a></p>
+                    <div class="contact-box">
+                        <p style="margin-bottom: 0;">Contact Email: <a href="mailto:cat.cafe1982@icloud.com">cat.cafe1982@icloud.com</a></p>
+                    </div>
                 </section>
             </div>
         </div>
